@@ -1,0 +1,13 @@
+(defun fn_builder(f1) #'(lambda (arg) (if (not (eql -1 (is_exists arg list1) ) ) (at  (exists arg list1) list1) (  fun_ret (setf list1  (cons (list (funcall f1 arg) arg ) list1)) (funcall f1 arg)  ) )) ) 
+(defun fun_ret (a b) b)
+( defun is_exists (a list11) (if (null list11) -1 ( if (eql  (cadar list11) a ) 1 (is_exists a (cdr list11) ) )  )   )
+( defun exists (a list11) (if (null list11) -1 ( if (eql  (cadar list11) a ) 0   (+ 1 (exists  a (cdr list11) ) ) )  )   )
+(defun at(a list11)   ( if(eql a 0) (caar list11 ) (at (- a 1) (cdr list11))    )   ) 
+
+(setf list1 '() )
+(write (funcall (fn_builder  #'(lambda (a) (+ a 3)) ) 1))
+(write (funcall (fn_builder  #'(lambda (a) (+ a 3)) ) 2))
+(write (funcall (fn_builder  #'(lambda (a) (+ a 3)) ) 3))
+(write (funcall (fn_builder  #'(lambda (a) (+ a 3)) ) 4))
+(write (funcall (fn_builder  #'(lambda (a) (+ a 3)) ) 3))
+(write list1)
